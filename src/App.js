@@ -1,7 +1,9 @@
+import Body from "./components/body/Body";
+
 function App() {
   return (
-    <div className="App text-3xl font-extrabold">
-      Hello 
+    <div className="App size-full">
+      <Body />
     </div>
   );
 }

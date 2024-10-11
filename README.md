@@ -1,5 +1,7 @@
 # Netflix-Gpt
     - configure tailwind
+    - header ✅
+    - login
   
 # Features
     - Login or sign up 
@@ -16,3 +18,8 @@
     - Netflix - Gpt
       - Searchbar
       - movie suggestions
+
+# Routing configuration 
+    - npm i -D react-router-dom
+    - create browser router
+    - RouterProvider
