@@ -2,17 +2,18 @@
 
     - configure tailwind --✅
 
-
-
     - src
       - components
         - Navbar --✅
-        - Form
+        - Form -- continue
+          - ui -- ✅
       - pages
         - Home
-        - Sign
+        - Sign -- ✅
+    - utils
+      - firebase -- ✅
 
-    - routing **After creating some page file setting up the route** -- ✅
+    - routing (After creating some page file setting up the route on App.js) -- ✅
 
 # Features
 
@@ -31,8 +32,9 @@
       - Searchbar
       - movie suggestions
 
-# Routing configuration
 
-    - npm i -D react-router-dom
-    - create browser router
-    - RouterProvider
+
+
+# images sources
+
+- <a href="https://www.freepik.com/free-vector/person-relaxing-home_6527965.htm#from_view=detail_alsolike">Image by freepik</a>

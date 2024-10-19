@@ -4,7 +4,6 @@ import Sign from './pages/Sign'
 import {
   createBrowserRouter,
   Outlet,
-  RouterProvider,
 } from "react-router-dom";
 
 
@@ -28,7 +27,7 @@ export const router = createBrowserRouter([
 ])
 
 function App() {
-  return <div className='App size-full bg-red-50'>
+  return <div className='App size-full'>
     <Navbar />
     <Outlet/>
   </div>
