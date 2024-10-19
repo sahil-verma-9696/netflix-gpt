@@ -1,6 +1,18 @@
 # Netflix-Gpt
 
-    - configure tailwind
+    - configure tailwind --✅
+
+
+
+    - src
+      - components
+        - Navbar --✅
+        - Form
+      - pages
+        - Home
+        - Sign
+
+    - routing **After creating some page file setting up the route** -- ✅
 
 # Features
 
