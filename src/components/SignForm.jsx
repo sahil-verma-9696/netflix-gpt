@@ -1,14 +1,30 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useSignUp from "../hooks/useSignUp";
 
-function SignForm() {
+function SignForm({ setErrorMsg }) {
   // all states
   const [isSingIn, setIsSingIn] = useState(true);
+  const { signUp } = useSignUp(setErrorMsg);
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  // email & password authentication
+  function handleSubmit(e) {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    signUp(email, password);
+  }
+
+  function handleClick(){
+
+  }
 
   return (
     <div className="sign-form  bg-white border border-slate-500 py-4 px-8 rounded-xl">
-      <form action="" className="flex flex-col">
+      <form onSubmit={handleSubmit} className="flex flex-col">
         <h1 className="text-2xl font-bold text-center ">Netflix-Gpt</h1>
         <h1 className="text-5xl font-extrabold text-wrap text-center ">
           {isSingIn ? "Sing in" : "Create"}
@@ -24,11 +40,13 @@ function SignForm() {
           />
         )}
         <input
+          ref={emailRef}
           className="border border-slate-500 rounded-full pl-4 px-2 py-1 my-2"
           type="text"
           placeholder="Email"
         />
         <input
+          ref={passwordRef}
           className="border border-slate-500 rounded-full pl-4 px-2 py-1 my-2"
           type="password"
           placeholder="Password"
@@ -42,7 +60,9 @@ function SignForm() {
         <p className="text-center text-sm my-2">
           or {!isSingIn ? "sing in" : "sing up"} with{" "}
         </p>
-        <button className="flex items-center justify-center font-bold  text-white ">
+        <button 
+        onClick={handleClick}
+        className="flex items-center justify-center font-bold  text-white ">
           <FontAwesomeIcon
             className="bg-blue-500 p-2 rounded-full text-lg"
             icon={faGoogle}

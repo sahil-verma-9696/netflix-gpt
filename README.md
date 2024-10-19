@@ -1,17 +1,23 @@
 # Netflix-Gpt
 
-    - configure tailwind --✅
+    - configure tailwind --✅ (1)
 
-    - src
-      - components
-        - Navbar --✅
-        - Form -- continue
+    - src (2)
+      - components (2)
+        - Navbar --✅ (2)
+        - SingForm -- continue  (3)
           - ui -- ✅
-      - pages
+          - firebase
+            - email & password sing in/up -- continue
+            - google sing in/up
+      - pages (2)
         - Home
         - Sign -- ✅
-    - utils
+    - utils (3)
       - firebase -- ✅
+    - store ✅
+      - appStore ( config my store ) ✅
+      - userSlice ✅
 
     - routing (After creating some page file setting up the route on App.js) -- ✅
 
@@ -31,9 +37,6 @@
     - Netflix - Gpt
       - Searchbar
       - movie suggestions
-
-
-
 
 # images sources
 
