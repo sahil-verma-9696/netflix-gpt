@@ -1,25 +1,29 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import useSignUp from "../hooks/useSignUp";
+import userSignUp from "../authentication/userSignUp";
+import userSignIn from "../authentication/userSignIn";
 
-function SignForm({ setErrorMsg }) {
+function SignForm({ setErrorMsg, isSignIn, setIsSignIn }) {
   // all states
-  const [isSingIn, setIsSingIn] = useState(true);
-  const { signUp } = useSignUp(setErrorMsg);
+  const { signUp, googleSignUp } = userSignUp(setErrorMsg);
+  const { signIn, googleSignIn } = userSignIn(setErrorMsg);
   const emailRef = useRef();
-  const passwordRef = useRef();
+  const passwordRef = useRef(); 
 
   // email & password authentication
-  function handleSubmit(e) {
+
+  async function handleSubmit(e) {
     e.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    signUp(email, password);
+    !isSignIn && (await signUp(email, password));
+    isSignIn && (await signIn(email, password));
   }
 
-  function handleClick(){
-
+  async function handleClick() {
+    !isSignIn && (await googleSignUp());
+    isSignIn && (await googleSignIn());
   }
 
   return (
@@ -27,12 +31,12 @@ function SignForm({ setErrorMsg }) {
       <form onSubmit={handleSubmit} className="flex flex-col">
         <h1 className="text-2xl font-bold text-center ">Netflix-Gpt</h1>
         <h1 className="text-5xl font-extrabold text-wrap text-center ">
-          {isSingIn ? "Sing in" : "Create"}
+          {isSignIn ? "Sing in" : "Create"}
         </h1>
         <h1 className="text-5xl font-extrabold text-wrap text-center mb-4">
           Account
         </h1>
-        {!isSingIn && (
+        {!isSignIn && (
           <input
             className="border border-slate-500 rounded-full pl-4 px-2 py-1 my-2"
             type="text"
@@ -55,14 +59,15 @@ function SignForm({ setErrorMsg }) {
           className="bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full font-bold py-2"
           type="submit"
         >
-          {isSingIn ? "Sing in" : "Create account"}
+          {isSignIn ? "Sing in" : "Create account"}
         </button>
         <p className="text-center text-sm my-2">
-          or {!isSingIn ? "sing in" : "sing up"} with{" "}
+          or {!isSignIn ? "sing up" : "sing in"} with
         </p>
-        <button 
-        onClick={handleClick}
-        className="flex items-center justify-center font-bold  text-white ">
+        <button
+          onClick={handleClick}
+          className="flex items-center justify-center font-bold  text-white "
+        >
           <FontAwesomeIcon
             className="bg-blue-500 p-2 rounded-full text-lg"
             icon={faGoogle}
@@ -75,9 +80,9 @@ function SignForm({ setErrorMsg }) {
           <span>Already an account ? </span>
           <span
             className="text-blue-500 cursor-pointer"
-            onClick={() => setIsSingIn(!isSingIn)}
+            onClick={() => setIsSignIn(!isSignIn)}
           >
-            {!isSingIn ? "Sing in" : "Sing up"}
+            {!isSignIn ? "Sing in" : "Sing up"}
           </span>
         </p>
       </form>

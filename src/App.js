@@ -1,15 +1,14 @@
 import { Provider } from 'react-redux';
-import Navbar from './components/Navbar'
+
 import Home from './pages/Home'
 import Sign from './pages/Sign'
 import {
   createBrowserRouter,
-  Outlet,
 } from "react-router-dom";
 import store from './store/appStore';
+import Body from './components/Body';
 
 export const router = createBrowserRouter([
-
 
   {
     path: "/",
@@ -29,10 +28,10 @@ export const router = createBrowserRouter([
 
 function App() {
 
-  return <div className='App size-full'>
-    <Provider store={store}>
-      <Navbar />
-      <Outlet />
-    </Provider>
-  </div>
+  return (
+    <div className='App w-full'>
+      <Provider store={store}>
+        <Body />
+      </Provider>
+    </div>);
 }

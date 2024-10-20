@@ -1,30 +1,11 @@
 import SignForm from "../components/SignForm";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import welcomeGif from "../assets/browse.png";
-import { useDispatch } from "react-redux";
-import { onAuthStateChanged } from "firebase/auth";
-import { addUser } from "../store/userSlice";
-import { auth } from "../utils/firebase";
+
 function Sign() {
+  const [isSignIn, setIsSignIn] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const { uid, email } = user;
-        dispatch(
-          addUser({
-            uid: uid,
-            email: email,
-          })
-        );
-        setSuccessMsg("Registration Successfull");
-      } else {
-      }
-    });
-  }, []);
 
   return (
     <div className="w-full h-[calc(100vh-89px)] flex items-center px-4 relative">
@@ -46,14 +27,12 @@ function Sign() {
       )}
       {successMsg && (
         <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-white shadow-xl rounded-b-xl py-2 px-4 w-96 ">
-          <h2 className="text-green-600 font-bold underline text-lg">
-            ✅ Registration Successfull
+          <h2 className="text-green-600 font-bold  text-lg">
+            ✅ {successMsg?.heading}
           </h2>
-
-          <p className="px-2">{successMsg}</p>
-
+          <p className="px-2">{successMsg?.msg}</p>
           <div
-            onClick={() => setErrorMsg(null)}
+            onClick={() => setSuccessMsg(null)}
             className="bg-green-500 px-2 py-1 cursor-pointer rounded-xl font-bold text-white w-fit"
           >
             Close
@@ -67,7 +46,12 @@ function Sign() {
         </div>
       </div>
 
-      <SignForm errorMsg={errorMsg} setErrorMsg={setErrorMsg} />
+      <SignForm
+        errorMsg={errorMsg}
+        setErrorMsg={setErrorMsg}
+        isSignIn={isSignIn}
+        setIsSignIn={setIsSignIn}
+      />
     </div>
   );
 }
