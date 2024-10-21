@@ -7,6 +7,7 @@ import { signOut } from "firebase/auth";
 function Navbar() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+
   async function handleLogout() {
     if (user) {
       const res = await signOut(auth)
@@ -15,12 +16,14 @@ function Navbar() {
     }
   }
   return (
-    <nav className="w-full h-16 bg-gradient-to-r from-violet-500 to-fuchsia-500 flex justify-between items-center px-6">
+    <nav className="w-full h-16 bg-gradient-to-r from-violet-500 to-fuchsia-500 flex justify-between items-center px-6 sticky top-0 z-10">
       {/* left part */}
       <ul className="flex gap-8 items-center">
+        <Link to={"/"}>
         <h1 className="logo text-white font-extrabold text-3xl [text-shadow:_0_2px_4px_black]">
           Netflix-Gpt
         </h1>
+        </Link>
       </ul>
 
       {/* right part */}

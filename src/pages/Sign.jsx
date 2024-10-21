@@ -40,9 +40,9 @@ function Sign() {
         </div>
       )}
       <div className="flex items-center justify-center">
-        <h1 className="text-8xl font-semibold">Browse</h1>
+        <h1 className="animate-bounce text-8xl font-semibold">Browse</h1>
         <div className="img-wrapper w-[500px] overflow-hidden object-fit ">
-          <img src={welcomeGif} alt="welcome gif" className="object-cover" />
+          <img src={welcomeGif} alt="welcome gif" className=" object-cover" />
         </div>
       </div>
 

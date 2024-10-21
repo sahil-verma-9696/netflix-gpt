@@ -27,6 +27,8 @@
       - moviesSlice
         - nowPlayingMovies
 
+  - shimmer ui for home page done -- ✅
+
     - routing (After creating some page file setting up the route on App.js) -- ✅
 
 # Features
@@ -35,7 +37,7 @@
       - Login/Sign up - form
       - Redirect to browse page
 
-    - Browse (After Authentication)
+    - Browse ()
     - Main Movie
       - trailer in background
       - title and discription

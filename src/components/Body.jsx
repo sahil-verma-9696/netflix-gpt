@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 function Body() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -31,7 +32,7 @@ function Body() {
   }, []);
 
   return (
-    <div>
+    <div className="w-full">
       <Navbar />
       <Outlet />
     </div>

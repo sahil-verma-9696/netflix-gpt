@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import store from './store/appStore';
 import Body from './components/Body';
+import Movie from './pages/Movie';
 
 export const router = createBrowserRouter([
 
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "/sign",
         element: <Sign />
+      },
+      {
+        path: "/movie/:movie_id",
+        element: <Movie />
       }
     ]
   },

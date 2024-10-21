@@ -1,23 +1,34 @@
-import React, { useEffect } from "react";
-import { TMDB_API_OPTION, TMDB_NOWPLAYINGMOVIES } from "../utils/constants";
-import { useDispatch } from "react-redux";
-import { addNowPlayingMovies } from "./../store/moviesSlice";
-function Home() {
-  const dispatch = useDispatch();
-  async function nowPlayingMovies() {
-    const responce = await fetch(TMDB_NOWPLAYINGMOVIES, TMDB_API_OPTION);
-    const data = await responce.json();
-    dispatch(addNowPlayingMovies(data));
-    console.log(data);
-  }
+import { useSelector } from "react-redux";
+import { useNowPlayingMovies } from "../hooks/useNowPlayingMovies";
+import HomeShim from "../shimmer/HomeShim";
+import BannerShim from "../shimmer/BannerShim";
+import MoviesCont from "../components/MoviesCont";
+import { useTrendingFetch } from "../hooks/useTrendingFetch";
 
-  useEffect(() => {
-    nowPlayingMovies();
-  }, []);
+function Home() {
+  useNowPlayingMovies();
+  useTrendingFetch();
+
+  const nowPlayingMovieslst = useSelector(
+    (store) => store?.movies?.nowPlayingMovies?.results
+  );
+  const trendingMovies = useSelector(
+    (store) => store?.movies?.trending?.movies?.results
+  );
+  const movies = useSelector((store) => store.movies);
+  const { nowPlayingMovies, trending } = movies;
+
+  if (!nowPlayingMovies || !trending) return <HomeShim />;
 
   return (
-    <div className="size-full flex justify-center items-center font-extrabold text-5xl">
-      Movies
+    <div className="home w-4/5 m-auto">
+      
+      {!trending && <BannerShim />}
+
+      <h1 className="text-3xl font-semibold my-2">Trending</h1>
+      <MoviesCont movieslst={trendingMovies} />
+      <h1 className="text-3xl font-semibold my-2">Now Playing Movies</h1>
+      <MoviesCont movieslst={nowPlayingMovieslst} />
     </div>
   );
 }

@@ -6,4 +6,12 @@ export const TMDB_API_OPTION = {
     }
 };
 
+
+// all api
 export const TMDB_NOWPLAYINGMOVIES = 'https://api.themoviedb.org/3/movie/now_playing?page=1'
+export const TMDB_MOVIE_DETAIL = "https://api.themoviedb.org/3/movie/"
+export const TMDB_TRENDING_MOVIES = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US'
+
+// image urls
+export const TMDB_MOVIE_POSTER = "https://image.tmdb.org/t/p/w300_and_h450_face"
+export const TMDB_MOVIE_BACK_DROP_POSTER = "https://image.tmdb.org/t/p/w533_and_h300_bestv2"
