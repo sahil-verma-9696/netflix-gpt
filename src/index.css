@@ -56,5 +56,5 @@ body {
   /* Dark gradient overlay */
   backdrop-filter: blur(3px);
   /* Background blur */
-  z-index: 1;
+  z-index: 1;           
 }

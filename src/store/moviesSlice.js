@@ -4,23 +4,25 @@ const movieSlice = createSlice({
     name: "movie",
     initialState: {
         nowPlayingMovies: null,
-        movieDetails : null,
-        trending : {
-            movies : null,
-        }
+        movieDetails: {}, // Store movie details as an object where each key is the movie_id
+        trending: {
+            movies: null,
+        },
     },
     reducers: {
         addNowPlayingMovies: (state, action) => {
             state.nowPlayingMovies = action.payload;
         },
-        addMovieDetails : (state,action)=>{
-            state.movieDetails = action.payload;
+        addMovieDetails: (state, action) => {
+            // Store movie details by movie_id, preventing overwriting of other movies' details
+            const { movie_id, details } = action.payload;
+            state.movieDetails[movie_id] = details;
         },
-        addTrendingMovies : (state,action)=>{
+        addTrendingMovies: (state, action) => {
             state.trending.movies = action.payload;
         }
     }
-})
+});
 
-export const { addNowPlayingMovies,addMovieDetails,addTrendingMovies } = movieSlice.actions;
+export const { addNowPlayingMovies, addMovieDetails, addTrendingMovies } = movieSlice.actions;
 export default movieSlice.reducer;

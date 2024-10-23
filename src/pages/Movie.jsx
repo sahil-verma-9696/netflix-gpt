@@ -12,9 +12,12 @@ function Movie() {
   const { movie_id } = useParams();
   useMovieDetails(movie_id);
 
-  const movieDetails = useSelector((store) => store.movies.movieDetails);
+  const movieDetails = useSelector((store) => store.movies?.movieDetails[movie_id]);
+  
+  console.log(movieDetails)
 
   if (!movieDetails) return;
+
 
   const {
     poster_path,
@@ -49,7 +52,7 @@ function Movie() {
 
       <div className="Movie-detail-banner w-full h-[550px] relative overflow-hidden ">
         <div className=" z-10 absolute top-6 left-20 flex items-center  ">
-          <div className="poster-wrapper rounded-md w-[450px] h-[450px] overflow-hidden">
+          <div className="poster-wrapper rounded-md w-[300px] h-[450px] overflow-hidden">
             <img
               className="size-full object-cover"
               src={TMDB_MOVIE_POSTER+poster_path}
@@ -57,7 +60,7 @@ function Movie() {
             />
           </div>
 
-          <div className="details ml-6 text-white">
+          <div className="details w-4/6 ml-6 text-white">
             <h1 className="text-4xl font-bold">
               {title}{" "}
               <span className="text-slate-100 font-normal">
