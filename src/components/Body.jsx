@@ -9,7 +9,6 @@ import SideBar from "./SideBar";
 function Body() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -34,7 +33,7 @@ function Body() {
   return (
     <div className="w-full">
       <Navbar />
-      <div className="w-full">
+      <div className="w-full h-full flex">
         <SideBar />
         <Outlet />
       </div>
