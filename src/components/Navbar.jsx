@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { removeUser } from "../store/userSlice";
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -10,19 +12,22 @@ function Navbar() {
 
   async function handleLogout() {
     if (user) {
-      const res = await signOut(auth)
+      const res = await signOut(auth);
       console.log(res);
       dispatch(removeUser());
     }
   }
   return (
-    <nav className="w-full h-16 bg-gradient-to-r from-violet-500 to-fuchsia-500 flex justify-between items-center px-6 sticky top-0 z-10">
+    <nav className="w-full h-16 bg-gradient-to-r from-violet-500 to-fuchsia-500 flex justify-between items-center px-6 fixed top-0 z-50">
       {/* left part */}
       <ul className="flex gap-8 items-center">
+        <li className="text-3xl font-extrabold cursor-pointer">
+          <FontAwesomeIcon icon={faBars} />
+        </li>
         <Link to={"/"}>
-        <h1 className="logo text-white font-extrabold text-3xl [text-shadow:_0_2px_4px_black]">
-          Netflix-Gpt
-        </h1>
+          <h1 className="logo text-white font-extrabold text-3xl [text-shadow:_0_2px_4px_black]">
+            Netflix-Gpt
+          </h1>
         </Link>
       </ul>
 

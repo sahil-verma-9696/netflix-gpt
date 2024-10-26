@@ -17,4 +17,5 @@ export const TMDB_MOVIE_CAST_CREW = "https://api.themoviedb.org/3/movie/"
 // image urls
 export const TMDB_IMG_BASE_URL = "https://image.tmdb.org/t/p/"
 export const TMDB_MOVIE_POSTER = "https://image.tmdb.org/t/p/w300_and_h450_face"
+export const TMDB_CAST_IMG_BASE_URL = "https://image.tmdb.org/t/p/w138_and_h175_face"
 export const TMDB_MOVIE_BACK_DROP_POSTER = "https://image.tmdb.org/t/p/w533_and_h300_bestv2"

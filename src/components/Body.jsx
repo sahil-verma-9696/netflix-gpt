@@ -5,11 +5,11 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { addUser } from "../store/userSlice";
 import { useDispatch } from "react-redux";
-
+import SideBar from "./SideBar";
 function Body() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -34,7 +34,10 @@ function Body() {
   return (
     <div className="w-full">
       <Navbar />
-      <Outlet />
+      <div className="w-full">
+        <SideBar />
+        <Outlet />
+      </div>
     </div>
   );
 }

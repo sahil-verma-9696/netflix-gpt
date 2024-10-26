@@ -4,6 +4,8 @@ import HomeShim from "../shimmer/HomeShim";
 import MoviesCont from "../components/MoviesCont";
 import { useTrendingFetch } from "../hooks/useTrendingFetch";
 import Banner from "../components/Banner";
+import HorizontalContShim from "../shimmer/HorizontalContShim";
+import BannerShim from "../shimmer/BannerShim";
 
 function Home() {
   useNowPlayingMovies();
@@ -22,13 +24,11 @@ function Home() {
 
   return (
     <div className="home w-4/5 m-auto">
-      
-
-      <Banner/>
-      <h1 className="text-3xl font-semibold my-2">Trending</h1>
-      <MoviesCont movieslst={trendingMovies} />
-      <h1 className="text-3xl font-semibold my-2">Now Playing Movies</h1>
-      <MoviesCont movieslst={nowPlayingMovieslst} />
+      {trendingMovies ? <Banner/> : <BannerShim/>}
+      <h1 className="text-3xl font-semibold mt-6">Trending</h1>
+      {trendingMovies ?<MoviesCont movieslst={trendingMovies} />:<HorizontalContShim/>}
+      <h1 className="text-3xl font-semibold mt-6">Now Playing Movies</h1>
+      {nowPlayingMovieslst ? <MoviesCont movieslst={nowPlayingMovieslst} /> : <HorizontalContShim/>}
     </div>
   );
 }
