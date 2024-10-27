@@ -8,6 +8,8 @@ import {
 import store from './store/appStore';
 import Body from './components/Body';
 import Movie from './pages/Movie';
+import WatchList from './pages/WatchList';
+import Favourite from './pages/Favourite'
 
 export const router = createBrowserRouter([
 
@@ -26,7 +28,15 @@ export const router = createBrowserRouter([
       {
         path: "/movie/:movie_id",
         element: <Movie />
-      }
+      },
+      {
+        path : "/watchlist",
+        element:<WatchList/>
+      },
+      {
+        path : "/favourite",
+        element: <Favourite/>
+      },
     ]
   },
 ])

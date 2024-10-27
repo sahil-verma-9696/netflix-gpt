@@ -1,22 +1,27 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListUl, faPlay } from "@fortawesome/free-solid-svg-icons";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavourite, removeFromFavourite } from "../../store/moviesSlice";
 
 const TxtDetails = ({ movieDetails }) => {
+  const {
+    id,
+    vote_average,
+    overview,
+    tagline,
+    runtime,
+    genres,
+    title,
+    release_date,
+    adult,
+    production_companies: [{ origin_country }],
+  } = movieDetails;
 
-    const {
-        poster_path,
-        backdrop_path,
-        vote_average,
-        overview,
-        tagline,
-        runtime,
-        genres,
-        title,
-        release_date,
-        adult,
-        production_companies: [{ origin_country }],
-      } = movieDetails;
+  const dispatch = useDispatch();
+  const isFavourite = useSelector((store) => store.movies?.favourites)?.some(
+    (movie) => movie.id === id
+  );
 
   function getTimeFormate(minutes) {
     let hours = Math.floor(minutes / 60);
@@ -61,9 +66,22 @@ const TxtDetails = ({ movieDetails }) => {
         <div className="size-8 bg-violet-500 border-2 rounded-full flex justify-center items-center">
           <FontAwesomeIcon icon={faListUl} />
         </div>
-        <div className="size-8 bg-violet-500 border-2 rounded-full flex justify-center items-center">
-          <FontAwesomeIcon icon={faHeart} />
-        </div>
+
+        {
+          <div
+            onClick={() => {
+              dispatch(
+                isFavourite ? removeFromFavourite(id) : addToFavourite(movieDetails)
+              );
+            }}
+            className={`${
+              isFavourite ? "bg-red-500 " : "bg-violet-500"
+            } cursor-pointer size-8  border-2 rounded-full flex justify-center items-center`}
+          >
+            <FontAwesomeIcon icon={faHeart} />
+          </div>
+        }
+
         <div className="font-bold">
           <FontAwesomeIcon icon={faPlay} />
           <span> Play Trailer</span>

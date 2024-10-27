@@ -34,13 +34,13 @@
 # Features
 
     - Login or sign up ✅
-      - Login/Sign up - form
-      - Redirect to browse page
+      - Login/Sign up - form -- ✅ 
+      - Redirect to browse page -- ✅ 
 
     - Browse ()
     - Main Movie
-      - trailer in background
-      - title and discription
+      - trailer in background --✅
+      - title and discription --✅ 
       - Movie Suggestion
         - horizontal movies list
 
@@ -50,4 +50,5 @@
 
 # images sources
 
-- <a href="https://www.freepik.com/free-vector/person-relaxing-home_6527965.htm#from_view=detail_alsolike">Image by freepik</a>
+  - special thanks for free vector image support
+ ["https://www.freepik.com/free-vector/person-relaxing-home_6527965.htm#from_view=detail_alsolike"] Image by freepik

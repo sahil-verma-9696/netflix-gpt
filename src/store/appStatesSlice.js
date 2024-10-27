@@ -4,6 +4,7 @@ const appStateSlice = createSlice({
     name: "appStates",
     initialState: {
         showSideBar: false,
+       
     },
     reducers: {
         toggleSideBar: (state, action) => {

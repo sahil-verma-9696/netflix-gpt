@@ -15,31 +15,40 @@ const SideBar = () => {
   return (
     <aside className="px-5 py-4 bg-violet-500  h-[calc(100vh-80px)] text-white text-2xl sticky top-[80px]">
       <ul className="flex flex-col gap-4 justify-center">
-        <li className="flex items-center gap-2 cursor-pointer ">
+        <Link to={"/"} className="flex items-center gap-2 cursor-pointer ">
           <span className="size-12 flex justify-center items-center hover:bg-black hover:bg-opacity-30 rounded-full">
-            <Link to={"/"}>
-              <FontAwesomeIcon icon={faHouse} />
-            </Link>
+            <FontAwesomeIcon icon={faHouse} />
           </span>
           {showSideBar && <span className="text-sm font-semibold">Home</span>}
-        </li>
-        <li className="flex items-center gap-2 cursor-pointer">
+        </Link>
+
+        <Link
+          to={"/watchlist"}
+          className="flex items-center gap-2 cursor-pointer"
+        >
           <span className="size-12 flex justify-center items-center hover:bg-black hover:bg-opacity-30 rounded-full">
             <FontAwesomeIcon icon={faList} />
           </span>
-          {showSideBar && <span className="text-sm font-semibold">Watch list</span>}
-        </li>
-        <li className="flex items-center gap-2 cursor-pointer">
+          {showSideBar && (
+            <span className="text-sm font-semibold">Watch list</span>
+          )}
+        </Link>
+
+        <Link to={"/favourite"} className="flex items-center gap-2 cursor-pointer">
           <span className="size-12 flex justify-center items-center hover:bg-black hover:bg-opacity-30 rounded-full">
             <FontAwesomeIcon icon={faHeart} />
           </span>
-          {showSideBar && <span className="text-sm font-semibold">Favourites</span>}
-        </li>
+          {showSideBar && (
+            <span className="text-sm font-semibold">Favourites</span>
+          )}
+        </Link>
         <li className="flex items-center gap-2 cursor-pointer">
           <span className="size-12 flex justify-center items-center hover:bg-black hover:bg-opacity-30 rounded-full">
             <FontAwesomeIcon icon={faUser} />
           </span>
-          {showSideBar && <span className="text-sm font-semibold">Profile</span>}
+          {showSideBar && (
+            <span className="text-sm font-semibold">Profile</span>
+          )}
         </li>
       </ul>
     </aside>
