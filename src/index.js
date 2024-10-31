@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {router} from './App'
+import { router } from './App'
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { RouterProvider } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+  <RouterProvider router={router}></RouterProvider>
   // </React.StrictMode>
 );
 

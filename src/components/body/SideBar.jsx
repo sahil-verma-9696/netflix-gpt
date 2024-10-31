@@ -11,10 +11,12 @@ import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const showSideBar = useSelector((store) => store.appStates.showSideBar);
-
   return (
-    <aside className="px-5 py-4 bg-violet-500  h-[calc(100vh-80px)] text-white text-2xl sticky top-[80px]">
-      <ul className="flex flex-col gap-4 justify-center">
+    <aside
+      className="bg-violet-500 w-full h-fit text-white text-2xl  fixed bottom-0 z-10 
+     sm:w-fit sm:px-5 sm:py-4 sm:h-[calc(100vh-80px)] sm:sticky sm:top-[80px]"
+    >
+      <ul className="flex sm:flex-col gap-4 justify-center">
         <Link to={"/"} className="flex items-center gap-2 cursor-pointer ">
           <span className="size-12 flex justify-center items-center hover:bg-black hover:bg-opacity-30 rounded-full">
             <FontAwesomeIcon icon={faHouse} />
@@ -34,7 +36,10 @@ const SideBar = () => {
           )}
         </Link>
 
-        <Link to={"/favourite"} className="flex items-center gap-2 cursor-pointer">
+        <Link
+          to={"/watchlist/favourites"}
+          className="flex items-center gap-2 cursor-pointer"
+        >
           <span className="size-12 flex justify-center items-center hover:bg-black hover:bg-opacity-30 rounded-full">
             <FontAwesomeIcon icon={faHeart} />
           </span>

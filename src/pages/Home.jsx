@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { useNowPlayingMovies } from "../hooks/useNowPlayingMovies";
 import HomeShim from "../shimmer/HomeShim";
-import MoviesCont from "../components/MoviesCont";
+import MoviesCont from "../components/home/MoviesCont";
 import { useTrendingFetch } from "../hooks/useTrendingFetch";
-import Banner from "../components/Banner";
+import Banner from "../components/home/Banner";
 import HorizontalContShim from "../shimmer/HorizontalContShim";
 import BannerShim from "../shimmer/BannerShim";
 
@@ -24,11 +24,19 @@ function Home() {
 
   return (
     <div className="home w-4/5 m-auto">
-      {trendingMovies ? <Banner/> : <BannerShim/>}
+      {trendingMovies ? <Banner /> : <BannerShim />}
       <h1 className="text-3xl font-semibold mt-6">Trending</h1>
-      {trendingMovies ?<MoviesCont movieslst={trendingMovies} />:<HorizontalContShim/>}
+      {trendingMovies ? (
+        <MoviesCont movieslst={trendingMovies} />
+      ) : (
+        <HorizontalContShim />
+      )}
       <h1 className="text-3xl font-semibold mt-6">Now Playing Movies</h1>
-      {nowPlayingMovieslst ? <MoviesCont movieslst={nowPlayingMovieslst} /> : <HorizontalContShim/>}
+      {nowPlayingMovieslst ? (
+        <MoviesCont movieslst={nowPlayingMovieslst} />
+      ) : (
+        <HorizontalContShim />
+      )}
     </div>
   );
 }

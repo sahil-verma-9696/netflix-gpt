@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { TMDB_MOVIE_BACK_DROP_POSTER } from "../utils/constants";
+import { TMDB_MOVIE_BACK_DROP_POSTER } from "../../utils/constants";
 
 function Banner() {
   const trendingMovies = useSelector(

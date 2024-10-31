@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeUser } from "../store/userSlice";
-import { auth } from "../utils/firebase";
+import { removeUser } from "../../store/userSlice";
+import { auth } from "../../utils/firebase";
 import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { toggleSideBar } from "../store/appStatesSlice";
+import { toggleSideBar } from "../../store/appStatesSlice";
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -23,7 +23,8 @@ function Navbar() {
       {/* left part */}
       <ul className="flex gap-6 items-center">
         <li
-          className="text-3xl font-extrabold cursor-pointer size-12 flex justify-center items-center px-1 rounded-full [text-shadow:_0_2px_4px_black] hover:bg-black hover:bg-opacity-30"
+          className="hidden 
+          sm:size-12 sm:px-1 sm:text-3xl sm:font-extrabold sm:cursor-pointer sm:flex sm:justify-center sm:items-center sm:rounded-full sm:hover:bg-black sm:hover:bg-opacity-30"
           onClick={() => {
             dispatch(toggleSideBar());
           }}
@@ -35,7 +36,11 @@ function Navbar() {
           )}
         </li>
         <Link to={"/"}>
-          <h1 className="logo  font-extrabold text-3xl [text-shadow:_0_2px_4px_black]">
+          <h1
+            className="logo 
+          font-extrabold [text-shadow:_0_2px_4px_black] 
+          sm:text-3xl"
+          >
             Netflix-Gpt
           </h1>
         </Link>
@@ -46,7 +51,9 @@ function Navbar() {
         {user && (
           <li
             onClick={handleLogout}
-            className="font-bold  text-xl border-2 px-2 py-1 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-40 hover:[text-shadow:_0_2px_4px_black] "
+            className="text-sm px-1 py-1 font-semibold border-2 rounded-md cursor-pointer 
+            sm:text-xl sm:font-bold
+            hover:bg-white hover:bg-opacity-40 hover:[text-shadow:_0_2px_4px_black] "
           >
             Logout
           </li>
@@ -54,9 +61,11 @@ function Navbar() {
         {!user && (
           <Link
             to={"/sign"}
-            className="font-bold  text-xl border-2 px-2 py-1 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-40 hover:[text-shadow:_0_2px_4px_black] "
+            className="text-sm px-1 py-1 font-semibold border-2 rounded-md cursor-pointer 
+            sm:text-xl sm:font-bold
+            hover:bg-white hover:bg-opacity-40 hover:[text-shadow:_0_2px_4px_black] "
           >
-            {"Sign up"}
+            Sign up
           </Link>
         )}
       </ul>

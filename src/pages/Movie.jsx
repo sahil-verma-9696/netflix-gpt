@@ -33,11 +33,11 @@ function Movie() {
   } = movieDetails;
 
   return (
-    <div className="movie-page w-full">
+    <div className="movie-page sm:w-full">
       <div className="movie-details bg-violet-500 w-full">
         <TopMenu />
 
-        <div className="Movie-detail-banner w-full h-[550px] relative overflow-hidden ">
+        <div className="Movie-detail-banner w-full  h-[550px] relative overflow-hidden ">
           <div className=" z-10 absolute top-6 left-20 flex items-center  ">
             <Poster poster_path={poster_path} />
             <TxtDetails movieDetails={movieDetails} />

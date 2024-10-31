@@ -1,5 +1,5 @@
 import React from "react";
-import { TMDB_MOVIE_POSTER } from "../utils/constants";
+import { TMDB_MOVIE_POSTER } from "../../utils/constants";
 import { Link } from "react-router-dom";
 
 function MovieCard({ item }) {

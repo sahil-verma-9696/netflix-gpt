@@ -3,11 +3,13 @@ import CardShim from "./CardShim";
 
 function HorizontalContShim() {
   return (
-    <div className="my-6 py-2 flex gap-6 w-full overflow-x-hidden ">
+    <div
+      className="my-6 py-2 w-full overflow-x-hidden flex flex-col gap-6
+    sm:flex sm:flex-row sm:overflow-x-scroll"
+    >
       {[1, 2, 3, 4, 5, 6].map((index) => (
-        <CardShim key={index}/>
+        <CardShim key={index} />
       ))}
-      
     </div>
   );
 }
