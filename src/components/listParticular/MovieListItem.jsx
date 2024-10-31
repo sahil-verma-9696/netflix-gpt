@@ -2,7 +2,7 @@ import React from "react";
 import { TMDB_MOVIE_BACK_DROP_POSTER } from "../../utils/constants";
 import { Link } from "react-router-dom";
 
-const ListItem = ({id,backdrop_path,title,release_date,vote_average,overview,tagline}) => {
+const MovieListItem = ({id,backdrop_path,title,release_date,vote_average,overview,tagline}) => {
   return (
     <Link to={"/movie/"+id}>
     <div className="bg-purple-300 w-full flex mt-2 p-2 rounded-xl">
@@ -22,11 +22,11 @@ const ListItem = ({id,backdrop_path,title,release_date,vote_average,overview,tag
         </h1>
         <h2>{tagline}</h2>
         <p>{ vote_average}</p>
-        <p className="text-wrap w-96"> { overview.substring(0, 60)}...</p>
+        <p className="text-wrap w-96"> { overview?.substring(0, 60)}...</p>
       </div>
     </div>
     </Link>
   );
 };
 
-export default ListItem;
+export default MovieListItem;

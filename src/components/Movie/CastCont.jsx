@@ -8,7 +8,7 @@ const CastCont = () => {
   const castAndCrew = useSelector(
     (store) => store.movies?.castAndCrew[movie_id]
   );
-  console.log(castAndCrew);
+  // console.log(castAndCrew);
   return (
     <div className="cast-cont flex gap-4 py-4 overflow-x-scroll">
       {castAndCrew?.cast?.map((cast) => (

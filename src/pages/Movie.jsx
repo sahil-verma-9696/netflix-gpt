@@ -19,7 +19,7 @@ function Movie() {
     (store) => store.movies?.movieDetails[movie_id]
   );
 
-  console.log(movieDetails);
+  // console.log(movieDetails);
 
   if (!movieDetails) return;
 

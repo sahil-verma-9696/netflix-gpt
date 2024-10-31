@@ -1,8 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SelectWatchListElement from "./SelectWatchListElement";
+import { toggleWatchListForm } from "../../store/appStatesSlice";
+import { useParams } from "react-router-dom";
 
 const SelectWatchList = () => {
+  
+  const dispatch = useDispatch()
   const watchLists = useSelector((store) => store.movies?.watchLists);
   console.log(watchLists);
   return (
@@ -16,7 +20,8 @@ const SelectWatchList = () => {
           <SelectWatchListElement key={watchList.name} watachList={watchList} />
         ))}
       </ul>
-      <button className="bg-purple-500 text-white font-bold px-2 rounded-md mt-2">
+      <button className="bg-purple-500 text-white font-bold px-2 rounded-md mt-2"
+      onClick={()=>{dispatch(toggleWatchListForm())}}>
         New +
       </button>
     </div>

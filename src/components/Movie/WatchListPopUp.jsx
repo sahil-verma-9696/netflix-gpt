@@ -1,7 +1,16 @@
+import { useDispatch, useSelector } from "react-redux";
 import SelectWatchList from "./SelectWatchList";
 import WatchListForm from "./WatchListForm";
+import {
+  toggleWatchListForm,
+  toggleWatchListPopup,
+} from "../../store/appStatesSlice";
 
 function WatchListPopUp() {
+  const dispatch = useDispatch();
+  const showWatchListForm = useSelector(
+    (store) => store.appStates.showWatchListForm
+  );
   return (
     <div
       className="relative
@@ -10,9 +19,13 @@ function WatchListPopUp() {
       <div
         className="bg bg-purple-300  bg-opacity-50 
     sm:w-full sm:h-full"
+        onClick={() => {
+          dispatch(toggleWatchListPopup());
+          
+        }}
       ></div>
-      {/* <WatchListForm /> */}
-      <SelectWatchList/>
+      {showWatchListForm && <WatchListForm />}
+      {!showWatchListForm && <SelectWatchList />}
     </div>
   );
 }

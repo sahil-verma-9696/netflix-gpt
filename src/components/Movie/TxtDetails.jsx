@@ -3,6 +3,7 @@ import { faListUl, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavourite, removeFromFavourite } from "../../store/moviesSlice";
+import {toggleWatchListPopup} from './../../store/appStatesSlice'
 import WatchListPopUp from "./WatchListPopUp";
 const TxtDetails = ({ movieDetails }) => {
   const {
@@ -19,7 +20,12 @@ const TxtDetails = ({ movieDetails }) => {
   } = movieDetails;
 
   const dispatch = useDispatch();
-  const isFavourite = useSelector((store) => store.movies?.favourites)?.some(
+  const showWatchListPopup = useSelector(
+    (store) => store.appStates.showWatchListPopup
+  );
+  const watchLists = useSelector((store) => store.movies?.watchLists);
+
+  const isFavourite = watchLists[watchLists.length - 1]?.movies?.some(
     (movie) => movie.id === id
   );
 
@@ -63,10 +69,13 @@ const TxtDetails = ({ movieDetails }) => {
         {Math.floor(vote_average * 10)}%
       </div>
       <div className="buttons flex gap-4 items-center my-2">
-        <div className="size-8 bg-violet-500 border-2 rounded-full flex justify-center items-center">
+        <div
+          className="size-8 bg-violet-500 border-2 rounded-full flex justify-center items-center cursor-pointer"
+          onClick={() => {dispatch(toggleWatchListPopup())}}
+        >
           <FontAwesomeIcon icon={faListUl} />
-          <WatchListPopUp/>
         </div>
+        {showWatchListPopup && <WatchListPopUp />}
 
         {
           <div

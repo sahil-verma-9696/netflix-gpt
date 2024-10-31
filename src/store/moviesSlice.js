@@ -9,52 +9,10 @@ const movieSlice = createSlice({
     trending: { movies: null },
     watchLists: [
       {
-        id: "first_watchlist",
-        name: "first watchlist",
-        description: "dummy description",
-        movies: [],
-      },
-      {
-        id: "second_watchlist",
-        name: "second watchlist",
-        description: "dummy description",
-        movies: [],
-      },
-      {
-        id: "third_watchlist",
-        name: "third watchlist",
-        description: "dummy description",
-        movies: [],
-      },
-      {
-        id: "fourth_watchlist",
-        name: "fourth watchlist",
-        description: "dummy description",
-        movies: [],
-      },
-      {
-        id: "fifth_watchlist",
-        name: "fifth watchlist",
-        description: "dummy description",
-        movies: [],
-      },
-      {
-        id: "sixth_watchlist",
-        name: "sixth watchlist",
-        description: "dummy description",
-        movies: [],
-      },
-      {
-        id: "seventh_watchlist",
-        name: "seventh watchlist",
-        description: "dummy description",
-        movies: [],
-      },
-      {
         id: "favourites",
         name: "favourites",
-        description: "Favourite movies list",
-        movies: [{}],
+        discription: "Favourite movies list",
+        movies: [],
       },
     ],
   },
@@ -76,9 +34,11 @@ const movieSlice = createSlice({
 
     // Multiple Watchlists reducers
     createWatchList: (state, action) => {
-      const { id, name, description } = action.payload;
+      const { id, name, discription } = action.payload;
       if (!state.watchLists.some((watchList) => watchList.id === id)) {
-        state.watchLists.push({ id, name, description, movies: [] });
+        state.watchLists.unshift({ id, name, discription, movies: [] });
+      } else {
+        alert(name + " already exist");
       }
     },
     addToWatchList: (state, action) => {
@@ -87,7 +47,7 @@ const movieSlice = createSlice({
         (list) => list.id === watchListId
       );
       if (watchList && !watchList.movies.some((item) => item.id === movie.id)) {
-        watchList.movies.push(movie);
+        watchList.movies.unshift(movie);
       }
     },
     removeFromWatchList: (state, action) => {

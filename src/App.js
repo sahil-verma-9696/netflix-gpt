@@ -7,7 +7,7 @@ import store from "./store/appStore";
 import Body from "./components/body/Body";
 import Movie from "./pages/Movie";
 import WatchList from "./pages/WatchList";
-import List from "./components/listParticular/List";
+import ListOfWatchlist from "./components/listParticular/ListOfWatchlist";
 
 export const router = createBrowserRouter([
   {
@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/watchlist/:watchlistId",
-        element: <List />,
+        element: <ListOfWatchlist />,
       },
     ],
   },
