@@ -1,3 +1,6 @@
+# Live url
+  - https://netflix-gpt-85d3b.web.app/
+
 # Netflix-Gpt
 
     - configure tailwind --✅ (1)
