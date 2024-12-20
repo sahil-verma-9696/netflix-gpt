@@ -4,7 +4,7 @@ import { removeUser } from "../../store/userSlice";
 import { auth } from "../../utils/firebase";
 import { signOut } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faSearch, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { toggleSideBar } from "../../store/appStatesSlice";
 
 function Navbar() {
@@ -47,8 +47,13 @@ function Navbar() {
       </ul>
 
       {/* right part */}
-      <ul>
-        {user && (
+      <ul className="flex items-center gap-4">
+        <li>
+          <Link to="/search">
+            <FontAwesomeIcon icon={faSearch} size="lg" />
+          </Link>
+        </li>
+        {user ? (
           <li
             onClick={handleLogout}
             className="text-sm px-1 py-1 font-semibold border-2 rounded-md cursor-pointer 
@@ -57,8 +62,7 @@ function Navbar() {
           >
             Logout
           </li>
-        )}
-        {!user && (
+        ) : (
           <Link
             to={"/sign"}
             className="text-sm px-1 py-1 font-semibold border-2 rounded-md cursor-pointer 

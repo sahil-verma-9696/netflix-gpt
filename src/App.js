@@ -8,6 +8,7 @@ import Body from "./components/body/Body";
 import Movie from "./pages/Movie";
 import WatchList from "./pages/WatchList";
 import ListOfWatchlist from "./components/listParticular/ListOfWatchlist";
+import Search from "./pages/Search";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
         path: "/watchlist/:watchlistId",
         element: <ListOfWatchlist />,
       },
+      {
+        path: "/search",
+        element : <Search/>
+      }
     ],
   },
 ]);

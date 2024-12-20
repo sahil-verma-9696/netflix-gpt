@@ -58,3 +58,16 @@ body {
   /* Background blur */
   z-index: 1;           
 }
+.animate-gradient {
+  background-size: 200%;
+  animation: gradient-animation 3s linear infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}

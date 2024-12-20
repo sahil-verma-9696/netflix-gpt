@@ -12,7 +12,7 @@ export const TMDB_NOWPLAYINGMOVIES = 'https://api.themoviedb.org/3/movie/now_pla
 export const TMDB_MOVIE_DETAIL = "https://api.themoviedb.org/3/movie/"
 export const TMDB_TRENDING_MOVIES = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US'
 export const TMDB_MOVIE_CAST_CREW = "https://api.themoviedb.org/3/movie/"
-
+export const TMDB_MOVIE_SEARCH = "https://api.themoviedb.org/3/search/movie"
 
 // image urls
 export const TMDB_IMG_BASE_URL = "https://image.tmdb.org/t/p/"
